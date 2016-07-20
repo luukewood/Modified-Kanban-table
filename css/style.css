@@ -1,0 +1,152 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700,300);
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+ul,ol {
+	list-style: none;
+}
+
+button {
+	border: none;
+	cursor: pointer;
+	outline: none;
+}
+
+.board {
+	position: relative;
+}
+
+.board h1 {
+	text-align: center;
+	font-family: 'Lato', sans-serif;
+	text-transform: uppercase;
+	font-weight: 400;
+	letter-spacing: 1px;
+	font-size: 40px;
+}
+
+.create-column {
+	padding: 10px;
+	color: #FFF;
+	font-family: 'Lato', sans-serif;
+	background: #22313F;
+	letter-spacing: 1.5px;
+	position: absolute;
+	bottom: 0;
+	transform: translateY(100%);
+}
+
+.card-list {
+	width: 100%;
+	min-height: 60px;
+}
+
+.column-container {
+	max-width: 1200px;
+	margin: 0 auto;
+	background: #52B3D9;
+	display: table;
+	min-height: 400px;
+	position: relative;
+}
+
+.column {
+	display: table-cell;
+	width: calc(1200px / 3);
+	position: relative;
+	padding: 0 30px; 
+}
+
+.column + .column {
+	border-left: 1px solid white;
+}
+
+.card {
+	background: #2574A9;
+	color:#FFF;
+	padding: 10px 14px;
+	position: relative;
+	margin: 2% 2%;
+	cursor: pointer;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-size: 13px;
+	font-family: 'Lato', sans-serif;
+}
+
+.card-placeholder {
+	padding: 10px 14px;
+	margin: 2% 2%;
+	background: #E4F1FE;
+}
+
+.column > .column-add-card {
+	width: 90%;
+	bottom: 0;
+	left: 0;
+	position: absolute;
+	background: #2574A9;
+	padding: 10px 15px;
+	font-size: 15px;
+	letter-spacing: 1px;
+	color: #FFF;
+	font-family: 'Lato', sans-serif;
+}
+
+.card > button[class^="btn"] {
+	background: none;
+	color:#FFF;
+	font-weight: 300;
+	position: absolute;
+	transform: translateY(-50%);
+	top:50%;
+	right: 2%;
+}
+
+.card .btn-delete:hover {
+	color: #22313F;
+	transition: all 0.5s;
+}
+
+.column > button {
+	transform: translateY(100%);
+}
+
+.column > button[class^="btn"] {
+	width: 10%;
+	color: #FFF;
+	position: absolute;
+	bottom:0;
+	right: 0;
+}
+
+.column-title {
+	margin: 20px 0 20px 0;
+	text-align: center;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-size: 16px;
+	color: #22313F;
+	font-family: 'Lato', sans-serif;
+}
+
+.add-card {
+	background: #2574A9;
+	padding: 10px 15px;
+	font-size: 15px;
+	letter-spacing: 1px;
+	color: #FFF;
+	font-family: 'Lato', sans-serif;
+}
+
+.btn-delete {
+	background: #22313F;
+	font-weight: 300;
+	font-size: 15px;
+	padding: 10px; 
+	font-family: 'Lato', sans-serif;
+}
