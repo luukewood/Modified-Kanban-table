@@ -15,13 +15,19 @@ function Column(id, name) {
 		
 		// PODPINANIE ODPOWIEDNICH ZDARZEŃ POD WĘZŁY
 		columnDelete.click(function() {
-			self.deleteColumn();
+			$.ajax({
+      			url: baseUrl + '/column/' + self.id,
+      			method: 'DELETE',
+      			success: function(response){
+        			self.deleteColumn();
+      			}
+    		});
 		});
 		
 		columnAddCard.click(function(event) {
 			var cardName = prompt("Wpisz nazwę karty");
 			event.preventDefault();
-			self.createCard(new Card(cardName));
+			// self.createCard(new Card(cardName));
 
 			$.ajax({
     			url: baseUrl + '/card',
@@ -51,12 +57,6 @@ Column.prototype = {
 	},
 	deleteColumn: function() {
 	  var self = this;
-	  $.ajax({
-      	url: baseUrl + '/column/' + self.id,
-      	method: 'DELETE',
-      	success: function(response){
-        	self.element.remove();
-      }
-    });
+	  self.element.remove();
 	}
 };
