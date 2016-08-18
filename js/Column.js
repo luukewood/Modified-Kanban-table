@@ -1,6 +1,6 @@
 function Column(id, name) {
 	var self = this;
-	
+
 	this.id = id;
 	this.name = name || 'Nie podano nazwy';
 	this.element = createColumn();
@@ -10,9 +10,26 @@ function Column(id, name) {
 		var column = $('<div class="column"></div>');
 		var columnTitle = $('<h2 class="column-title">' + self.name + '</h2>');
 		var columnCardList = $('<ul class="card-list"></ul>');
-		var columnDelete = $('<button class="btn-delete">x</button>');
+		var columnDelete = $('<button class="btn-delete">Remove Column</button>');
 		var columnAddCard = $('<button class="column-add-card">Add Card</button>');
-		
+		var wrapperForCardName = $('<div>', {
+			'class': "wrapper-for-name"
+		});
+
+		var cardNameInput = $('<input>', {
+			'class': 'card-name-input',
+			name: 'getColumnName',
+			type: 'text',
+			id: 'column-name',
+			value: ''
+		}).appendTo(wrapperForCardName);
+
+		var aproveCardNameBtn = $('<span>', {
+			'class': 'approve-card'
+		}).html($( '<i class="fa fa-plus" aria-hidden="true"></i>') );
+
+		aproveCardNameBtn.appendTo(wrapperForCardName);
+
 		// PODPINANIE ODPOWIEDNICH ZDARZEŃ POD WĘZŁY
 		columnDelete.click(function() {
 			$.ajax({
@@ -23,40 +40,51 @@ function Column(id, name) {
       			}
     		});
 		});
-		
-		columnAddCard.click(function(event) {
-			var cardName = prompt("Wpisz nazwę karty");
-			event.preventDefault();
-			// self.createCard(new Card(cardName));
 
-			$.ajax({
-    			url: baseUrl + '/card',
-    			method: 'POST',
-    			data: {
-    				name: cardName,
-    				bootcamp_kanban_column_id: self.id
-    			},
-    			success: function(response) {
-        			var card = new Card(response.id, cardName);
-        			self.createCard(card);
-    			}
-			});
+		columnAddCard.click(function(event) {
+			wrapperForCardName.toggleClass('is-slide');
 		});
-			
+
+		aproveCardNameBtn.on('click', function(event) {
+			var cardName = cardNameInput.val();
+
+			if(cardName) {
+				$.ajax({
+	    			url: baseUrl + '/card',
+	    			method: 'POST',
+	    			data: {
+	    				name: cardName,
+	    				kanban_column_id: self.id
+	    			},
+	    			success: function(response) {
+	        			var card = new Card(response.id, cardName);
+	        			self.createCard(card);
+								wrapperForCardName.removeClass('is-slide');
+	    			}
+				});
+			};
+
+		});
+
 			// KONSTRUOWANIE ELEMENTU KOLUMNY
 		column.append(columnTitle)
 			.append(columnDelete)
 			.append(columnAddCard)
-			.append(columnCardList);
+			.append(columnCardList)
+			.append(wrapperForCardName);
 			return column;
 		}
 	}
+
 Column.prototype = {
 	createCard: function(card) {
 	  this.element.children('ul').append(card.element);
 	},
+
 	deleteColumn: function() {
 	  var self = this;
 	  self.element.remove();
+		var firstColumn = columnContainer.children().filter(':first');
+		columnContainer.innerWidth( firstColumn.innerWidth() * columnContainer.children().length);
 	}
 };

@@ -1,11 +1,22 @@
 // OGÓLNA FUNKCJA
-
-
 var baseUrl = 'https://kodilla.com/pl/bootcamp-api';
 var myHeaders = {
   'X-Client-Id': 11,
   'X-Auth-Token': '8d7ee46aa923999e1c4d8d849a3d44a1'
 };
+var columnContainer = $('.column-container');
+var singleColumn = $('.column');
+var columnContainerWidth = $('.column-container').width();
+var toggleNameColumnInputBtn = $('.create-column');
+
+toggleNameColumnInputBtn.on('click', function(){
+  if(columnContainer.children().length > 3 ) {
+    alert('Mozesz dodac tylko 4 columny');
+    return;
+  }
+
+  $('.column-name').toggleClass('is-down');
+});
 
 $.ajaxSetup({
 	headers: myHeaders
@@ -29,9 +40,7 @@ function setupColumns(columns) {
 
 function setupCards(col, cards) {
 	cards.forEach(function(card) {
-	    var card = new Card(card.id, card.name, card.bootcamp_kanban_column_id);
+	    var card = new Card(card.id, card.name, card.kanban_column_id);
 	  	col.createCard(card);
   	});
 }
-
-// TWORZENIE NOWYCH EGZEMPLARZY KOLUMN
