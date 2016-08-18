@@ -1,4 +1,11 @@
 // OGÓLNA FUNKCJA
+$(window).on('load', function() {
+
+    $(".loading").fadeOut();
+    $(".loaderPage").delay(1000).fadeOut("slow");
+
+});
+
 var baseUrl = 'https://kodilla.com/pl/bootcamp-api';
 var myHeaders = {
   'X-Client-Id': 11,

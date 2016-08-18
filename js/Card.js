@@ -16,7 +16,7 @@ function Card(id, name) {
 			   	method: 'DELETE',
 			   	success: function(){
 		        	self.removeCard();
-    			}
+						}
     		});
 		});
 
