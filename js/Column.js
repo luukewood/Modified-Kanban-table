@@ -54,7 +54,7 @@ function Column(id, name) {
 	    			method: 'POST',
 	    			data: {
 	    				name: cardName,
-	    				kanban_column_id: self.id
+	    					bootcamp_kanban_column_id: self.id
 	    			},
 	    			success: function(response) {
 	        			var card = new Card(response.id, cardName);
@@ -65,6 +65,7 @@ function Column(id, name) {
 			};
 
 		});
+		
 
 			// KONSTRUOWANIE ELEMENTU KOLUMNY
 		column.append(columnTitle)
@@ -76,6 +77,7 @@ function Column(id, name) {
 		}
 	}
 
+
 Column.prototype = {
 	createCard: function(card) {
 	  this.element.children('ul').append(card.element);
@@ -84,7 +86,6 @@ Column.prototype = {
 	deleteColumn: function() {
 	  var self = this;
 	  self.element.remove();
-		var firstColumn = columnContainer.children().filter(':first');
-		columnContainer.innerWidth( firstColumn.innerWidth() * columnContainer.children().length);
+		var allColumns = columnContainer.children();
 	}
 };

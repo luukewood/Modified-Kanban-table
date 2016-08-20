@@ -87,7 +87,6 @@ button {
 	font-weight: 300;
 	letter-spacing: 1px;
 	font-size: 40px;
-	margin-bottom: 50px;
 }
 
 .column-name {
@@ -206,7 +205,7 @@ button {
 	font-family: 'Lato', sans-serif;
 	background: #2574A9;
 	letter-spacing: 1.5px;
-	margin-top: 50px;
+	margin-top: 20px;
 }
 
 .card-list {
@@ -217,8 +216,8 @@ button {
 .column-container {
 	width: 1200px;
 	margin: 0 auto;
-	background: #52B3D9;
-	display: block;;
+	/*background: #52B3D9;*/
+	display: block;
 	min-height: 400px;
 	position: relative;
 }
@@ -229,6 +228,8 @@ button {
 	padding: 0 30px;
 	min-height: 400px;
 	float: left;
+	margin-top: 120px;
+	width: 33.3333%;
 }
 
 .column + .column {
@@ -300,7 +301,7 @@ button {
 }
 
 .column-title {
-	margin: 20px 0 20px 0;
+	padding: 20px 0 20px 0;
 	text-align: center;
 	text-transform: uppercase;
 	letter-spacing: 1px;
@@ -324,4 +325,39 @@ button {
 	font-size: 15px;
 	padding: 10px;
 	font-family: 'Lato', sans-serif;
+}
+
+@media screen and ( min-width: 600px ) and ( max-width: 800px ) {
+
+	.column {
+		width: 300px;
+		margin: 120px auto 0 auto;
+	}
+}
+
+@media screen and (min-width: 200px) and (max-width: 799px) {
+	.column {
+		float: none;
+		width: 95%;
+		margin: 120px auto 0 auto;
+	}
+
+	.add-column {
+		width: 12%;
+	}
+
+	.column-name-input {
+		width: 60%;
+	}
+}
+
+@media screen and (max-width: 1200px) {
+	.column-container {
+		width: 100%;
+	}
+
+	.column-name {
+		width: 100%;
+	}
+
 }

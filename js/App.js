@@ -13,17 +13,31 @@ var myHeaders = {
 };
 var columnContainer = $('.column-container');
 var singleColumn = $('.column');
+var allColumns = columnContainer.children();
 var columnContainerWidth = $('.column-container').width();
 var toggleNameColumnInputBtn = $('.create-column');
 
 toggleNameColumnInputBtn.on('click', function(){
-  if(columnContainer.children().length > 3 ) {
+  if(allColumns.length > 3 ) {
     alert('Mozesz dodac tylko 4 columny');
     return;
   }
 
   $('.column-name').toggleClass('is-down');
 });
+
+
+
+// $(window).on('load resize', function(){
+//   var windowWidth = $(window).width();
+//   if( windowWidth < '1000' ) {
+//
+//     allColumns.each(function(i, ele){
+//       $(ele).innerWidth('100' + '%');
+//     });
+//   }
+//
+// });
 
 $.ajaxSetup({
 	headers: myHeaders
@@ -44,6 +58,7 @@ function setupColumns(columns) {
 		setupCards(col, column.cards);
     });
 }
+
 
 function setupCards(col, cards) {
 	cards.forEach(function(card) {
