@@ -16,6 +16,12 @@ button {
 	outline: none;
 }
 
+.column-container::after {
+	content: '';
+	display:block;
+	clear: both;
+}
+
 .loaderPage {
 	position: fixed;
 	width: 100%;
@@ -78,6 +84,7 @@ button {
 .board {
 	position: relative;
 	margin-top: 100px;
+	min-height: 800px;
 }
 
 .board h1 {
@@ -99,7 +106,6 @@ button {
 	top:0;
 	background: #2574A9;
 	padding: 20px 20px;
-	/*height: 50px;*/
 	display: block;
 	z-index: 1000;
 }
@@ -325,6 +331,32 @@ button {
 	font-size: 15px;
 	padding: 10px;
 	font-family: 'Lato', sans-serif;
+}
+
+footer {
+	text-align: center;
+	padding: 150px 0 50px 0;
+	font-size: 14px;
+	color: #000;
+	font-weight: 400;
+	letter-spacing: 2.5px;
+	font-family: 'Open Sans', sans-serif;
+}
+
+footer a {
+	font-size: 24px;
+	color: #2574A9;
+	display: inline-block;
+	position: relative;
+}
+
+footer .fa {
+	line-height: 40px;
+	font-size: 40px;
+}
+
+footer p {
+	margin-top: 40px;
 }
 
 @media screen and ( min-width: 600px ) and ( max-width: 800px ) {
